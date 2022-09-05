@@ -21,9 +21,9 @@
 
 ### **Quick Instructions**
 - Add **[Index Templates](./templates/rss-index_template.json)** and **[Component Templates](./templates/rss-component_template.json)** to your Elastic Stack 
-- Create the Logstash **[rss-security-feed.conf](./logstash/rss-security-feed.conf)** file
+- Create the Logstash **[rss-security-feed.conf](./logstash/rss-security-feed.conf)** file and then start Logstash
     - Modify the **[pipelines.yml](./logstash/pipelines.yml)** file (optional). You can also run Logstash via the command line. Reference [documentation](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html) for additional details.
-- Validate data is incoming and mapping is corrrect
+- Validate data is incoming and mapping is correct
     - Check data in **Discover**
     - Run `GET indexname/_mappings` in **Dev Tools**. Your mapping should match the contents in the **[rss-feed-mappings.json](./templates/rss-feed-mappings.json)** file.
 - Import Kibana **Saved Objects**
