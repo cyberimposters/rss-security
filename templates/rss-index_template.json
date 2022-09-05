@@ -1,0 +1,24 @@
+{
+  "index_templates": [
+    {
+      "name": "rss-feed",
+      "index_template": {
+        "index_patterns": [
+          "rss*"
+        ],
+        "template": {
+          "settings": {
+            "index": {
+              "lifecycle": {
+                "name": "rss-feed"
+              }
+            }
+          }
+        },
+        "composed_of": [
+          "rss-feed"
+        ]
+      }
+    }
+  ]
+}

@@ -1,0 +1,51 @@
+{
+  "rss-feed": {
+    "mappings": {
+      "properties": {
+        "@timestamp": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "text",
+          "fields": {
+            "keyword": {
+              "type": "keyword",
+              "ignore_above": 256
+            }
+          }
+        },
+        "author": {
+          "type": "keyword"
+        },
+        "event": {
+          "properties": {
+            "original": {
+              "type": "text",
+              "fields": {
+                "keyword": {
+                  "type": "keyword",
+                  "ignore_above": 256
+                }
+              }
+            }
+          }
+        },
+        "link": {
+          "type": "keyword"
+        },
+        "published": {
+          "type": "date"
+        },
+        "tags": {
+          "type": "keyword"
+        },
+        "title": {
+          "type": "keyword"
+        },
+        "updated": {
+          "type": "date"
+        }
+      }
+    }
+  }
+}
