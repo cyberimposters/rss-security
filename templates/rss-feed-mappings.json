@@ -6,13 +6,7 @@
           "type": "date"
         },
         "@version": {
-          "type": "text",
-          "fields": {
-            "keyword": {
-              "type": "keyword",
-              "ignore_above": 256
-            }
-          }
+          "type": "keyword"
         },
         "author": {
           "type": "keyword"
@@ -20,13 +14,7 @@
         "event": {
           "properties": {
             "original": {
-              "type": "text",
-              "fields": {
-                "keyword": {
-                  "type": "keyword",
-                  "ignore_above": 256
-                }
-              }
+              "type": "text"
             }
           }
         },

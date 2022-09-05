@@ -1,65 +1,38 @@
+## PUT _component_template/rss-feed
 {
-  "component_templates": [
-    {
-      "name": "rss-feed",
-      "component_template": {
-        "template": {
-          "settings": {
-            "index": {
-              "number_of_replicas": "0"
-            }
-          },
-          "mappings": {
-            "properties": {
-              "event.original": {
-                "type": "text"
-              },
-              "author": {
-                "eager_global_ordinals": false,
-                "norms": false,
-                "index": true,
-                "store": false,
-                "type": "keyword",
-                "index_options": "docs",
-                "split_queries_on_whitespace": false,
-                "doc_values": true
-              },
-              "link": {
-                "eager_global_ordinals": false,
-                "norms": false,
-                "index": true,
-                "store": false,
-                "type": "keyword",
-                "split_queries_on_whitespace": false,
-                "index_options": "docs",
-                "doc_values": true
-              },
-              "published": {
-                "type": "date"
-              },
-              "title": {
-                "eager_global_ordinals": false,
-                "norms": false,
-                "index": true,
-                "store": false,
-                "type": "keyword",
-                "index_options": "docs",
-                "split_queries_on_whitespace": false,
-                "doc_values": true
-              },
-              "updated": {
-                "type": "date"
-              },
-              "version": {
-                "type": "keyword"
-              },
-              "tags": {
-                "type": "keyword"
-              }
-            }
-          }
+  "template": {
+    "settings": {
+      "index": {
+        "number_of_replicas": "0"
+      }
+    },
+    "mappings": {
+      "properties": {
+        "event.original": {
+          "type": "text"
+        },
+        "author": {
+          "type": "keyword"
+        },
+        "link": {
+          "type": "keyword"
+        },
+        "published": {
+          "type": "date"
+        },
+        "title": {
+          "type": "keyword"
+        },
+        "updated": {
+          "type": "date"
+        },
+        "@version": {
+          "type": "keyword"
+        },
+        "tags": {
+          "type": "keyword"
         }
       }
     }
-  ]
+  }
 }

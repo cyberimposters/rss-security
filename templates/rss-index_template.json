@@ -1,24 +1,9 @@
+## PUT _index_template/rss-feed
 {
-  "index_templates": [
-    {
-      "name": "rss-feed",
-      "index_template": {
-        "index_patterns": [
-          "rss*"
-        ],
-        "template": {
-          "settings": {
-            "index": {
-              "lifecycle": {
-                "name": "rss-feed"
-              }
-            }
-          }
-        },
-        "composed_of": [
-          "rss-feed"
-        ]
-      }
-    }
+  "index_patterns": [
+    "rss*"
+  ],
+  "composed_of": [
+    "rss-feed"
   ]
 }
