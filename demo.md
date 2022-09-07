@@ -29,9 +29,17 @@
     - Run `GET indexname/_mappings` in **Dev Tools**. Your mapping should match the contents in the **[rss-feed-mappings.json](./templates/rss-feed-mappings.json)** file.
 - Import Kibana **Saved Objects**
     - Import the **[dashboard-simple.ndjson](./kibana/dashboard-simple.ndjson)** file to import the **Saved Objects** displayed in the image below
-    - Note: **[dashboard-detailed.ndjson]** is still in progress, but feel free to test it out if you want!
+    - Note: **dashboard-detailed.ndjson** is still in progress, but feel free to test it out if you want!
 
-![image](./kibana/rss-feed-dashboard.png)
+#### **Simple Dashboard**
+
+![image](./kibana/dashboard-simple.png)
+
+#### **Detailed Dashboard**
+
+![image](./kibana/dashboard-detailed.png)
+
+
 
 ### **Quick Notes**
 - Fingerprint filter in Logstash is used to avoid document duplication
