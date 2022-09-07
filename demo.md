@@ -44,4 +44,4 @@
 ### **Quick Notes**
 - Fingerprint filter in Logstash is used to avoid document duplication
 - Have fun!
-
+- [Known Issues](./notes/known_issues.md)
