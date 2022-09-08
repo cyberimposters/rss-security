@@ -18,6 +18,8 @@
 - KnowBe4
 - Threatpost
 - Malwarebytes
+- Troy Hunt
+- Microsoft Security
 
 ### **Quick Instructions**
 - Add **[Component Templates](./templates/rss-component_template.json)** and **[Index Templates](./templates/rss-index_template.json)** to your Elastic Stack 
