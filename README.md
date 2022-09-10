@@ -1,12 +1,11 @@
-## A Quick RSS Cybersecurity News Feed
----
+# A Quick RSS Cybersecurity News Feed
 
-### **Software**
+## **Software**
 - Elasticsearch (v.8.4.1)
 - Logstash 
 - Kibana
 
-### **RSS Feeds**
+## **RSS Feeds**
 - Dark Reading
 - Zero Day Initative
 - Bleeping Computer
@@ -22,7 +21,7 @@
 - Microsoft Security
 - Naked Security
 
-### **Quick Instructions**
+## **Quick Instructions**
 - Add **[Component Templates](./templates/rss-component_template.json)** and **[Index Templates](./templates/rss-index_template.json)** to your Elastic Stack 
 - The Logstash RSS input plugin needs to be installed. For plugins not bundled by default, it is easy to install by running `bin/logstash-plugin install logstash-input-rss`
 - Create the Logstash **[rss-security-feed.conf](./logstash/rss-security-feed.conf)** file and then start Logstash
@@ -31,16 +30,18 @@
     - Check data in **Discover**
     - Run `GET indexname/_mappings` in **Dev Tools**. Your mapping should match the contents in the **[rss-feed-mappings.json](./templates/rss-feed-mappings.json)** file.
 - Import Kibana **Saved Objects**
-    - Import the **[dashboard-simple.ndjson](./kibana/dashboard-simple.ndjson)** file to import the **Saved Objects** displayed in the image below
-    - Note: **[dashboard-detailed.ndjson](./kibana/dashboard-simple.ndjson)** is still in progress, but feel free to test it out if you want!
+    - Import the **[dashboard-simple.ndjson](./kibana/saved_objects/dashboard-simple.ndjson)** file to import the **Saved Objects** displayed in the image below
+    - Note: **[dashboard-detailed.ndjson](./kibana/saved_objects/dashboard-detailed.ndjson)** is still in progress, but feel free to test it out if you want!
 
-#### **Simple Dashboard**
+## **Simple Dashboard**
 
-![image](./kibana/dashboard-simple.png)
+![image](./kibana/dashboard_visual_images/dashboard-simple.png)
 
-#### **Detailed Dashboard**
+## **Detailed Dashboard**
 
-![image](./kibana/dashboard-detailed.png)
+![image](./kibana/dashboard_visual_images/detailed-dashboard-1.png)
+![image](./kibana/dashboard_visual_images/detailed-dashboard-2.png)
+![image](./kibana/dashboard_visual_images/detailed-dashboard-3.png)
 
 
 
