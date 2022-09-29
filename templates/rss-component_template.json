@@ -1,18 +1,16 @@
 ## PUT _component_template/rss-feed
 {
   "template": {
-    "settings": {
-      "index": {
-        "number_of_replicas": "0"
-      }
-    },
     "mappings": {
       "properties": {
-        "event.original": {
-          "type": "text"
+        "@version": {
+          "type": "keyword"
         },
         "author": {
           "type": "keyword"
+        },
+        "event.original": {
+          "type": "text"
         },
         "link": {
           "type": "keyword"
@@ -20,17 +18,27 @@
         "published": {
           "type": "date"
         },
-        "title": {
+        "tags": {
           "type": "keyword"
+        },
+        "title": {
+          "type": "keyword",
+          "fields": {
+            "text": {
+              "type": "text"
+            }
+          }
         },
         "updated": {
           "type": "date"
         },
-        "@version": {
-          "type": "keyword"
-        },
-        "tags": {
-          "type": "keyword"
+        "vuln": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "keyword"
+            }
+          }
         }
       }
     }

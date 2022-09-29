@@ -8,6 +8,9 @@
         "@version": {
           "type": "keyword"
         },
+        "apt": {
+          "type": "keyword"
+        },
         "author": {
           "type": "keyword"
         },
@@ -28,10 +31,22 @@
           "type": "keyword"
         },
         "title": {
-          "type": "keyword"
+          "type": "keyword",
+          "fields": {
+            "text": {
+              "type": "text"
+            }
+          }
         },
         "updated": {
           "type": "date"
+        },
+        "vuln": {
+          "properties": {
+            "id": {
+              "type": "keyword"
+            }
+          }
         }
       }
     }

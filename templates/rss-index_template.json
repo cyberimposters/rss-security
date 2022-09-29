@@ -1,5 +1,13 @@
 ## PUT _index_template/rss-feed
 {
+  "template": {
+    "settings": {
+      "index": {
+        "codec": "best_compression"
+      },
+      "number_of_replicas": 0
+    }
+  },
   "index_patterns": [
     "rss*"
   ],
