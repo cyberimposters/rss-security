@@ -1,9 +1,9 @@
 # A Quick RSS Cybersecurity News Feed
 
 ## **Software**
-- Elasticsearch (v.8.4.1)
+- Elasticsearch (v.8.5.1)
 - Logstash 
-- Kibana
+- Kibana (v.8.5.1)
 
 ## **RSS Feeds**
 - Dark Reading
