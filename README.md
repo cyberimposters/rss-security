@@ -2,7 +2,7 @@
 
 ## **Software**
 - Elasticsearch (v.8.5.1)
-- Logstash 
+- Logstash (v.8.5.1)
 - Kibana (v.8.5.1)
 
 ## **RSS Feeds**
