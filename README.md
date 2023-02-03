@@ -1,9 +1,9 @@
 # A Quick RSS Cybersecurity News Feed
 
 ## **Software**
-- Elasticsearch (v.8.5.1)
-- Logstash (v.8.5.1)
-- Kibana (v.8.5.1)
+- Elasticsearch (v.8.6.1)
+- Logstash (v.8.6.1)
+- Kibana (v.8.6.1)
 
 ## **RSS Feeds**
 - Dark Reading
@@ -22,9 +22,9 @@
 - Naked Security
 
 ## **Quick Instructions**
-- Add **[Component Templates](./templates/rss-component_template.json)** and **[Index Templates](./templates/rss-index_template.json)** to your Elastic Stack 
+- Add **[Component Templates](./templates/component/rss-component_template.json)** and **[Index Templates](./templates/index/rss-index_template.json)** to your Elastic Stack 
 - The Logstash RSS input plugin needs to be installed. For plugins not bundled by default, it is easy to install by running `bin/logstash-plugin install logstash-input-rss`
-- Create the Logstash **[rss-security-feed.conf](./logstash/rss-security-feed.conf)** file and then start Logstash
+- Create the Logstash **[rss-security-feed.conf](./logstash/rss/rss-security-feed.conf)** file and then start Logstash
     - Modify the **[pipelines.yml](./logstash/pipelines.yml)** file (optional). You can also run Logstash via the command line. Reference [documentation](https://www.elastic.co/guide/en/logstash/current/getting-started-with-logstash.html) for additional details.
 - Validate data is incoming and mapping is correct
     - Check data in **Discover**
