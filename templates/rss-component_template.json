@@ -6,17 +6,44 @@
         "@version": {
           "type": "keyword"
         },
+        "apt": {
+          "type": "keyword"
+        },
         "author": {
           "type": "keyword"
         },
         "event.original": {
           "type": "text"
         },
+        "known_data": {
+          "type": "object",
+          "properties": {
+            "vuln": {
+              "type": "object",
+              "properties": {
+                "short_description": {
+                  "type": "keyword"
+                }
+              }
+            }
+          }
+        },
         "link": {
           "type": "keyword"
         },
         "published": {
           "type": "date"
+        },
+        "reference": {
+          "type": "object",
+          "properties": {
+            "mandiant": {
+              "type": "keyword"
+            },
+            "mitre": {
+              "type": "keyword"
+            }
+          }
         },
         "tags": {
           "type": "keyword"
