@@ -20,6 +20,15 @@
 - Troy Hunt
 - Microsoft Security
 - Naked Security
+- Sophos
+- Cybersecurity News
+- Cyberscoop
+- Packet Storm
+- Elastic Security
+- Risky Business
+- VirusTotal
+- Hack Read
+- Security Affairs
 
 ## **Quick Instructions**
 - Add **[Component Templates](./templates/component/rss-component_template.json)** and **[Index Templates](./templates/index/rss-index_template.json)** to your Elastic Stack 
