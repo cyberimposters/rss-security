@@ -1,0 +1,76 @@
+{
+    "id": "abuse-ssl",
+    "conf": {
+      "output": "default",
+      "streamtags": [],
+      "groups": {},
+      "asyncFuncTimeout": 1000,
+      "functions": [
+        {
+          "conf": {},
+          "filter": "_raw.startsWith('#')",
+          "id": "drop"
+        },
+        {
+          "filter": "true",
+          "conf": {
+            "mode": "extract",
+            "type": "csv",
+            "srcField": "_raw",
+            "fields": [
+              "firstseen",
+              "destination_ip",
+              "destination_port"
+            ]
+          },
+          "id": "serde"
+        },
+        {
+          "filter": "true",
+          "conf": {
+            "wildcardDepth": 5,
+            "rename": [
+              {
+                "currentName": "destination_ip",
+                "newName": "\"destination.ip\""
+              },
+              {
+                "currentName": "destination_port",
+                "newName": "\"destination.port\""
+              }
+            ]
+          },
+          "id": "rename"
+        },
+        {
+          "filter": "true",
+          "conf": {
+            "source": "_raw",
+            "iterations": 100,
+            "overwrite": false,
+            "regex": "/(?<firstseen>\\d{4}-\\d{1,2}-\\d{1,2}\\s\\d{1,2}:\\d{1,2}:\\d{1,2}),(?<dst_ip>(?<!\\d)(?:(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])(?!\\d)),(?<dst_port>\\d+)/"
+          },
+          "id": "regex_extract",
+          "disabled": true
+        },
+        {
+          "filter": "true",
+          "conf": {
+            "wildcardDepth": 5,
+            "rename": [
+              {
+                "currentName": "dst_ip",
+                "newName": "\"destination.ip\""
+              },
+              {
+                "currentName": "dst_port",
+                "newName": "\"destination.port\""
+              }
+            ]
+          },
+          "id": "rename",
+          "disabled": true
+        }
+      ]
+    }
+  }
