@@ -1,0 +1,53 @@
+{
+  "type": "collection",
+  "ttl": "4h",
+  "removeFields": [],
+  "resumeOnBoot": false,
+  "schedule": {},
+  "streamtags": [],
+  "workerAffinity": false,
+  "collector": {
+    "conf": {
+      "discovery": {
+        "discoverType": "none"
+      },
+      "collectMethod": "get",
+      "pagination": {
+        "type": "none"
+      },
+      "authentication": "none",
+      "timeout": 0,
+      "useRoundRobinDns": false,
+      "disableTimeFilter": false,
+      "rejectUnauthorized": false,
+      "safeHeaders": [],
+      "retryRules": {
+        "type": "backoff",
+        "interval": 1000,
+        "limit": 5,
+        "multiplier": 2,
+        "codes": [
+          429,
+          503
+        ],
+        "enableHeader": true
+      },
+      "collectUrl": "`https://threatfox.abuse.ch/export/csv/recent/`"
+    },
+    "destructive": false,
+    "type": "rest"
+  },
+  "input": {
+    "type": "collection",
+    "staleChannelFlushMs": 10000,
+    "sendToRoutes": false,
+    "preprocess": {
+      "disabled": true
+    },
+    "throttleRatePerSec": "0",
+    "pipeline": "threatfox",
+    "output": "threatfox"
+  },
+  "savedState": {},
+  "id": "threatfox"
+}

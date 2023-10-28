@@ -1,0 +1,38 @@
+{
+  "id": "threatfox",
+  "systemFields": [
+    "cribl_pipe"
+  ],
+  "streamtags": [],
+  "loadBalanced": true,
+  "concurrency": 5,
+  "maxPayloadSizeKB": 4096,
+  "maxPayloadEvents": 0,
+  "compress": true,
+  "rejectUnauthorized": false,
+  "timeoutSec": 30,
+  "flushPeriodSec": 1,
+  "failedRequestLoggingMode": "none",
+  "safeHeaders": [],
+  "auth": {
+    "disabled": false,
+    "authType": "manual",
+    "username": "<elastic_username>",
+    "password": "<elastic_password>"
+  },
+  "elasticVersion": "auto",
+  "includeDocId": true,
+  "onBackpressure": "block",
+  "excludeSelf": false,
+  "urls": [
+    {
+      "weight": 1,
+      "url": "https://<elasticsearch_ip>:9200"
+    }
+  ],
+  "dnsResolvePeriodSec": 600,
+  "loadBalanceStatsPeriodSec": 300,
+  "type": "elastic",
+  "index": "`threatfox`",
+  "elasticPipeline": "threatfox"
+}

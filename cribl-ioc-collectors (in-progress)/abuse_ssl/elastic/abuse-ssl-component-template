@@ -1,0 +1,45 @@
+PUT _component_template/abuse-ssl
+{
+  "template": {
+    "mappings": {
+      "properties": {
+        "_raw": {
+          "type": "text"
+        },
+        "cribl_breaker": {
+          "type": "keyword"
+        },
+        "cribl_pipe": {
+          "type": "keyword"
+        },
+        "destination": {
+          "type": "object",
+          "properties": {
+            "ip": {
+              "type": "ip"
+            },
+            "port": {
+              "coerce": true,
+              "index": true,
+              "ignore_malformed": false,
+              "store": false,
+              "type": "long",
+              "doc_values": true
+            }
+          }
+        },
+        "host": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "keyword"
+            }
+          }
+        },
+        "firstseen": {
+          "type": "keyword"
+        }
+      }
+    }
+  }
+}

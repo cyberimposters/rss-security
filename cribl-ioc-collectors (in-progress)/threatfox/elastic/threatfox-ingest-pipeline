@@ -1,0 +1,14 @@
+PUT _ingest/pipeline/threatfox
+{
+  "processors": [
+    {
+      "fingerprint": {
+        "fields": [
+          "_raw"
+        ],
+        "target_field": "_id",
+        "method": "SHA-256"
+      }
+    }
+  ]
+}
