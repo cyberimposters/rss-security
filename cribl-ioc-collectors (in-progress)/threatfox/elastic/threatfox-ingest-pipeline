@@ -1,4 +1,4 @@
-PUT _ingest/pipeline/threatfox
+PUT _ingest/pipeline/ioc-examples
 {
   "processors": [
     {

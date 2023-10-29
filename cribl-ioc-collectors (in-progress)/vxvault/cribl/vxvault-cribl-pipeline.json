@@ -1,0 +1,41 @@
+{
+    "id": "vxvault",
+    "conf": {
+      "output": "default",
+      "streamtags": [],
+      "groups": {},
+      "asyncFuncTimeout": 1000,
+      "functions": [
+        {
+          "filter": "!_raw.startsWith('http')",
+          "conf": {},
+          "id": "drop"
+        },
+        {
+          "filter": "true",
+          "conf": {
+            "mode": "extract",
+            "type": "regex",
+            "srcField": "_raw",
+            "iterations": 100,
+            "overwrite": false,
+            "regex": "/(?<url>https:.*|http:.*)/",
+            "regexList": []
+          },
+          "id": "serde"
+        },
+        {
+          "filter": "true",
+          "conf": {
+            "mode": "extract",
+            "type": "regex",
+            "srcField": "_raw",
+            "iterations": 100,
+            "overwrite": false,
+            "regex": "/(?<ioc_value>([A-Za-z0-9]+[.]txt|[A-Za-z0-9]+[.]exe|[A-Za-z0-9]+[.]html|[A-Za-z0-9]+[.]php|[A-Za-z0-9]+[.]bin))/"
+          },
+          "id": "serde"
+        }
+      ]
+    }
+  }

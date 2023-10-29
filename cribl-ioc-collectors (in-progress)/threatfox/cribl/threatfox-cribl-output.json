@@ -34,5 +34,5 @@
   "loadBalanceStatsPeriodSec": 300,
   "type": "elastic",
   "index": "`threatfox`",
-  "elasticPipeline": "threatfox"
+  "elasticPipeline": "ioc-examples"
 }

@@ -1,82 +1,95 @@
 {
-    "id": "threatfox",
-    "conf": {
-      "output": "default",
-      "streamtags": [],
-      "groups": {},
-      "asyncFuncTimeout": 1000,
-      "functions": [
-        {
-          "conf": {},
-          "filter": "_raw.startsWith('#')",
-          "id": "drop"
+  "id": "threatfox",
+  "conf": {
+    "output": "default",
+    "streamtags": [],
+    "groups": {},
+    "asyncFuncTimeout": 1000,
+    "functions": [
+      {
+        "conf": {},
+        "filter": "_raw.startsWith('#')",
+        "id": "drop"
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "add": [
+            {
+              "disabled": false,
+              "value": "_raw.replaceAll('\"', '')",
+              "name": "_raw"
+            }
+          ]
         },
-        {
-          "filter": "true",
-          "conf": {
-            "mode": "extract",
-            "type": "csv",
-            "srcField": "_raw",
-            "fields": [
-              "firstseen",
-              "ioc_id",
-              "ioc_value",
-              "ioc_type",
-              "threat_type",
-              "fk_malware",
-              "malware_alias",
-              "malware_print",
-              "last_seen_utc",
-              "confidence_level",
-              "reference",
-              "tags",
-              "anonymous",
-              "reporter"
-            ]
-          },
-          "id": "serde"
+        "id": "eval"
+      },
+      {
+        "filter": "true",
+        "conf": {
+          "mode": "extract",
+          "type": "csv",
+          "srcField": "_raw",
+          "fields": [
+            "firstseen",
+            "ioc_id",
+            "ioc_value",
+            "ioc_type",
+            "threat_type",
+            "fk_malware",
+            "malware_alias",
+            "malware_print",
+            "last_seen_utc",
+            "confidence_level",
+            "reference",
+            "tags",
+            "anonymous",
+            "reporter"
+          ]
         },
-        {
-          "filter": "_raw.includes('ip:port')",
-          "conf": {
-            "source": "ioc_value",
-            "iterations": 100,
-            "overwrite": false,
-            "regex": "/(?<dst_ip>(?<!\\d)(?:(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])(?!\\d)):(?<dst_port>\\d+)/",
-            "regexList": []
-          },
-          "id": "regex_extract"
+        "id": "serde"
+      },
+      {
+        "filter": "_raw.includes('ip:port')",
+        "conf": {
+          "source": "ioc_value",
+          "iterations": 100,
+          "overwrite": false,
+          "regex": "/(?<dst_ip>(?<!\\d)(?:(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])\\.){3}(?:[01]?\\d\\d?|2[0-4]\\d|25[0-5])(?!\\d)):(?<dst_port>\\d+)/",
+          "regexList": []
         },
-        {
-          "filter": "_raw.includes('ip:port')",
-          "conf": {
-            "wildcardDepth": 5,
-            "rename": [
-              {
-                "currentName": "dst_ip",
-                "newName": "\"destination.ip\""
-              },
-              {
-                "currentName": "dst_port",
-                "newName": "\"destination.port\""
-              }
-            ]
-          },
-          "id": "rename"
+        "id": "regex_extract"
+      },
+      {
+        "filter": "_raw.includes('ip:port')",
+        "conf": {
+          "wildcardDepth": 5,
+          "rename": [
+            {
+              "currentName": "dst_ip",
+              "newName": "\"destination.ip\""
+            },
+            {
+              "currentName": "dst_port",
+              "newName": "\"destination.port\""
+            }
+          ]
         },
-        {
-          "filter": "_raw.includes('domain')",
-          "conf": {
-            "wildcardDepth": 5,
-            "rename": [
-              {
-                "currentName": "ioc_value",
-                "newName": "\"domain.name\""
-              }
-            ]
-          },
-          "id": "rename"
-        }
-      ]
-    }
+        "id": "rename"
+      },
+      {
+        "filter": "_raw.includes('domain')",
+        "conf": {
+          "wildcardDepth": 5,
+          "rename": [
+            {
+              "currentName": "ioc_value",
+              "newName": "\"domain.name\""
+            }
+          ]
+        },
+        "id": "rename"
+      }
+    ]
   }
+}

@@ -1,15 +1,20 @@
-PUT _index_template/threatfox
+PUT _index_template/ioc-examples
 {
   "template": {
     "settings": {
       "index": {
         "codec": "best_compression",
         "number_of_replicas": "0",
-        "default_pipeline": "threatfox"
+        "default_pipeline": "ioc-examples"
       }
     }
   },
   "index_patterns": [
-    "threatfox*"
+    "abuse*",
+    "threat*",
+    "vx*"
+  ],
+  "composed_of": [
+    "abuse-ssl"
   ]
 }

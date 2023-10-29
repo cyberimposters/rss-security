@@ -34,5 +34,5 @@
   "loadBalanceStatsPeriodSec": 300,
   "type": "elastic",
   "index": "`abuse-ssl`",
-  "elasticPipeline": "abuse-ssl"
+  "elasticPipeline": "ioc-examples"
 }
