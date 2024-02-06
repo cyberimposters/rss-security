@@ -7,6 +7,8 @@
 
 - Output the `known_exploited_vulnerabilities.csv` file to the path being referenced in the [known-vulnerabilites.conf](../logstash/cve/known-vulnerabilites.conf) input section
 
+- **You could 1,000% use the http_poller Logstash input. It is the superior option. I am currently working on a config to add**
+
 ### 2) Add the [`known-vulnerabilites.conf`](../logstash/cve/known-vulnerabilites.conf) file to your Logstash `conf.d` directory
 
 ### 3) Navigate to Kibana and add the `known-vulnerabilites` [component templates](../templates/component/cve-component_templates.json) and [index templates](../templates/index/cve-index_template.json)
@@ -34,7 +36,25 @@ PUT /_enrich/policy/known_vuln_policy
   "match": {
     "indices": "known-vulnerabilities",
     "match_field": "vuln.id",
-    "enrich_fields": [ "vuln.vulnerability_name", "vuln.due_date" , "vuln.date_added" , "vuln.short_description"  ]
+    "enrich_fields": [ "vuln.due_date" , "vuln.date_added" , "vuln.notes" , "vuln.required_action" , "vuln.product"]
+  }
+}
+
+PUT /_enrich/policy/cvss_score_policy
+{
+  "match": {
+    "indices": "cvss-rss-feed",
+    "match_field": "vuln.id",
+    "enrich_fields": [ "score1" , "score2" , "details" ]
+  }
+}
+
+PUT /_enrich/policy/apt_groups_policy
+{
+  "match": {
+    "indices": "apt-groups",
+    "match_field": "apt",
+    "enrich_fields": [ "apt" , "description" ]
   }
 }
 ```
@@ -43,20 +63,41 @@ PUT /_enrich/policy/known_vuln_policy
 
 ```
 POST /_enrich/policy/known_vuln_policy/_execute
+
+POST /_enrich/policy/cvss_score_policy/_execute
+
+POST /_enrich/policy/apt_groups_policy/_execute
 ```
 
 ### 8) Create an ingest pipeline composed of an enrich processor; you will be referencing your newly created enrichment policy.
 
 ```
-PUT /_ingest/pipeline/rss-feed-enrichment-pipeline
+PUT _ingest/pipeline/rss-feed-enrichment-pipeline
 {
   "processors": [
     {
       "enrich": {
-        "description": "Add 'vulnerability' details based on 'CISA's known vuln database'",
-        "policy_name": "known_vuln_policy",
         "field": "vuln.id",
+        "policy_name": "known_vuln_policy",
         "target_field": "known_data",
+        "ignore_missing": true,
+        "description": "Add 'vulnerability' details based on 'CISA's known vuln database'"
+      }
+    },
+    {
+      "enrich": {
+        "description": "Add 'apt' description based on 'apt.id'",
+        "policy_name": "apt_groups_policy",
+        "field": "apt",
+        "target_field": "known_data",
+        "ignore_missing": true
+      }
+    },
+    {
+      "enrich": {
+        "field": "vuln.id",
+        "policy_name": "cvss_score_policy",
+        "target_field": "score_data",
         "ignore_missing": true
       }
     }
@@ -87,3 +128,4 @@ GET rss-feed/_search
 
 - **Stack Management -> Ingest Pipeline -> rss-feed-enrichment-pipeline (Edit)**
 
+![image](/zz-working-folder/images/Screen%20Shot%202024-02-05%20at%206.04.02%20PM.png)

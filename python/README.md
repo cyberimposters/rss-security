@@ -1,0 +1,8 @@
+# Python Notes
+The purpose of the [elasticsearch-cve-collection.py](../zz-working-folder/logstash/python/elasticsearch-cve-collection.py) script is to retrieve information from the `rss-feed` index in elasticsearch and specifically search for events that include a "vuln.id" field. The value in this field represents a CVE ID. The script then captures all of the CVE IDs found and stores them in an [output file](../zz-working-folder/logstash/cvss/cve-list.txt.example). This output file serves as a list of the CVE IDs that will be utilized in the [elasticsearch-nvd-css-collection.py](../zz-working-folder/logstash/python/elasticsearch-nvd-css-collection.py) script.
+
+The [elasticsearch-nvd-css-collection.py](../zz-working-folder/logstash/python/elasticsearch-nvd-css-collection.py) script utilizes the CVE ID list to cross-reference with the National Institute of Standards and Technology National Vulnerability Database (NIST NVD). The goal is to match each CVE ID with its corresponding CVSS score and additional details. The collected information is then saved in a text file and imported into elasticsearch as a `cvss-rss-feed` index. This `cvss-rss-feed` index enriches the `rss-feed` documents as demonstrated in the accompanying image below.
+
+![image](../zz-working-folder/images/Screen%20Shot%202024-02-01%20at%206.17.25%20PM.png)
+
+![image](../zz-working-folder/images/Screen%20Shot%202024-02-01%20at%206.23.18%20PM.png)

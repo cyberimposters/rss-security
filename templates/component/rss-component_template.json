@@ -1,10 +1,15 @@
-## PUT _component_template/rss-feed
+PUT _component_template/rss-feed
 {
   "template": {
+    "settings": {
+      "index": {
+        "number_of_replicas": "0"
+      }
+    },
     "mappings": {
       "properties": {
-        "@version": {
-          "type": "keyword"
+        "event.original": {
+          "type": "text"
         },
         "apt": {
           "type": "keyword"
@@ -12,19 +17,34 @@
         "author": {
           "type": "keyword"
         },
-        "event.original": {
-          "type": "text"
-        },
         "known_data": {
           "type": "object",
           "properties": {
+            "apt": {
+              "type": "keyword"
+            },
             "vuln": {
               "type": "object",
               "properties": {
                 "short_description": {
                   "type": "keyword"
+                },
+                "product": {
+                  "type": "text"
+                },
+                "notes": {
+                  "type": "text"
+                },
+                "required_action": {
+                  "type": "text"
+                },
+                "id": {
+                  "type": "keyword"
                 }
               }
+            },
+            "description": {
+              "type": "text"
             }
           }
         },
@@ -34,20 +54,6 @@
         "published": {
           "type": "date"
         },
-        "reference": {
-          "type": "object",
-          "properties": {
-            "mandiant": {
-              "type": "keyword"
-            },
-            "mitre": {
-              "type": "keyword"
-            }
-          }
-        },
-        "tags": {
-          "type": "keyword"
-        },
         "title": {
           "type": "keyword",
           "fields": {
@@ -56,8 +62,22 @@
             }
           }
         },
-        "updated": {
-          "type": "date"
+        "tags": {
+          "type": "keyword"
+        },
+        "reference": {
+          "type": "object",
+          "properties": {
+            "mitre": {
+              "type": "keyword"
+            },
+            "mandiant": {
+              "type": "keyword"
+            },
+            "secureworks": {
+              "type": "keyword"
+            }
+          }
         },
         "vuln": {
           "type": "object",
@@ -66,6 +86,34 @@
               "type": "keyword"
             }
           }
+        },
+        "score_data": {
+          "type": "object",
+          "properties": {
+            "score2": {
+              "type": "keyword"
+            },
+            "vuln": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "keyword"
+                }
+              }
+            },
+            "details": {
+              "type": "text"
+            },
+            "score1": {
+              "type": "keyword"
+            }
+          }
+        },
+        "@version": {
+          "type": "keyword"
+        },
+        "updated": {
+          "type": "date"
         }
       }
     }

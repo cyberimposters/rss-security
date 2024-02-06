@@ -1,0 +1,12 @@
+# This file is where you define your pipelines. You can define multiple.
+# For more information on multiple pipelines, see the documentation:
+#   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
+
+- pipeline.id: osint-news-feed
+  path.config: "/etc/logstash/conf.d/news/*.conf"
+
+- pipeline.id: known-vulnerabilites
+  path.config: "/etc/logstash/conf.d/known-exploited-vuln/*.conf"
+
+- pipeline.id: cvss-scoring
+  path.config: "/etc/logstash/conf.d/cvss-scoring/*.conf"

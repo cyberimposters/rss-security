@@ -2,5 +2,15 @@
 # For more information on multiple pipelines, see the documentation:
 #   https://www.elastic.co/guide/en/logstash/current/multiple-pipelines.html
 
-- pipeline.id: rss-feed
-  path.config: "/etc/logstash/conf.d/*.conf"
+- pipeline.id: osint-news-feed
+  path.config: "/etc/logstash/conf.d/rss-security-feed.conf"
+
+# - pipeline.id: osint-news-feed
+#   path.config: "/etc/logstash/conf.d/news/*.conf"
+
+# - pipeline.id: known-vulnerabilites
+#   path.config: "/etc/logstash/conf.d/known-exploited-vuln/*.conf"
+#   pipeline.workers: 1
+
+# - pipeline.id: cvss-scoring
+#   path.config: "/etc/logstash/conf.d/cvss-scoring/*.conf"
