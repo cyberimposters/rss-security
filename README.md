@@ -47,7 +47,7 @@
     - If you decide to run Logstash as a Service (systemd), then I highly recommend using the [pipelines.yml](./logstash/pipelines.yml) file and check out the directory structure [here](./logstash/conf.d/).
 - Validate data is incoming and mapping is correct
     - Check data in **Discover**
-    - Run `GET indexname/_mappings` in **Dev Tools**. Your mapping should match the contents in the **[rss-feed-mappings.json](./templates/rss-feed-mappings.json)** file.
+    - Run `GET indexname/_mappings` in **Dev Tools**. Your mapping should match the contents in the **[rss-feed-mappings.json](./templates/mapping-output/rss-feed-mappings.json)** file.
 - Import Kibana **Saved Objects**
     - Import the **[dashboard-simple.ndjson](./kibana/saved_objects/dashboard-simple.ndjson)** file to import the **Saved Objects** displayed in the image below
     - Note: **[dashboard-detailed.ndjson](./kibana/saved_objects/dashboard-detailed.ndjson)** is still in progress, but feel free to test it out if you want!
