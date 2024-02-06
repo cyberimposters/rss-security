@@ -4,8 +4,8 @@
 - Elasticsearch (v.8.12.0)
 - Logstash (v.8.12.0)
 - Kibana (v.8.12.0)
-- Python (v.3.8.10) - Just Chill, More to Come Soon.
-- Python Elasticsearch Client (v.8.12.0) - Just Chill, More to Come Soon.
+- Python (v.3.8.10) - Just Chill, More to Come Soon. **[Notes](./python/README.md)**
+- Python Elasticsearch Client (v.8.12.0) - Just Chill, More to Come Soon. **[Notes](./python/README.md)**
 
 ## **RSS Feeds**
 - Ars Technica
@@ -49,18 +49,13 @@
     - Check data in **Discover**
     - Run `GET indexname/_mappings` in **Dev Tools**. Your mapping should match the contents in the **[rss-feed-mappings.json](./templates/mapping-output/rss-feed-mappings.json)** file.
 - Import Kibana **Saved Objects**
-    - Import the **[dashboard-simple.ndjson](./kibana/saved_objects/dashboard-simple.ndjson)** file to import the **Saved Objects** displayed in the image below
-    - Note: **[dashboard-detailed.ndjson](./kibana/saved_objects/dashboard-detailed.ndjson)** is still in progress, but feel free to test it out if you want!
+    - Import the **[dashboard-no-enrichments.ndjson](./kibana/saved_objects/2024/dashboard-no-enrichments.ndjson)** file to import the **Saved Objects** displayed in the image below
 
-## **Simple Dashboard**
 
-![image](./kibana/dashboard_visual_images/dashboard-simple.png)
+## **Dashboard - Without Enrichment Indices**
 
-## **Detailed Dashboard**
-
-![image](./kibana/dashboard_visual_images/detailed-dashboard-1.png)
-![image](./kibana/dashboard_visual_images/detailed-dashboard-2.png)
-![image](./kibana/dashboard_visual_images/detailed-dashboard-3.png)
+![image](./kibana/dashboard_visual_images/dashboard-visual-1.png)
+![image](./kibana/dashboard_visual_images/dashboard-visual-2.png)
 
 
 
