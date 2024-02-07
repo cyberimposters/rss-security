@@ -1,13 +1,9 @@
 
 # Enrich the the RSS index with data from CISA's known vulnerability database
 
-### 1) You will need to get the .csv file from [CISA's Known Vulnerability Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
+### 1) You will need to get the data from [CISA's Known Vulnerability Catalog](https://www.cisa.gov/known-exploited-vulnerabilities-catalog)
 
-- I opted to use `wget -O /<output_file_path>/known_exploited_vulnerabilities.csv https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv`
-
-- Output the `known_exploited_vulnerabilities.csv` file to the path being referenced in the [known-vulnerabilites.conf](../logstash/cve/known-vulnerabilites.conf) input section
-
-- **You could 1,000% use the http_poller Logstash input. It is the superior option. I am currently working on a config to add**
+- I opted to use the `http_poller` input plugin in Logstash to collect the data from (https://www.cisa.gov/sites/default/files/feeds/known_exploited_vulnerabilities.json). Please reference the [known-vulnerabilites.conf](../logstash/cve/known-vulnerabilites.conf) input section
 
 ### 2) Add the [`known-vulnerabilites.conf`](../logstash/cve/known-vulnerabilites.conf) file to your Logstash `conf.d` directory
 

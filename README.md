@@ -74,10 +74,6 @@
 ```
 mkdir /etc/logstash/cvss
 ```
-**output the known_exploited_vulnerabilities.csv** (wget -O /etc/logstash/cvss/known-vuln/known_exploited_vulnerabilities.csv https://www.cisa.gov/sites/default/files/csv/known_exploited_vulnerabilities.csv)
-```
-mkdir /etc/logstash/cvss/known-vuln
-```
 **elasticsearch-cve-collection.py and elasticsearch-nvd-css-collection.py scripts**
 ```
 mkdir /etc/logstash/python
